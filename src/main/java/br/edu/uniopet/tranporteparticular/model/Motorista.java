@@ -63,9 +63,7 @@ public class Motorista {
     public Motorista() {
     }
 
-    public Motorista(DetalhesVeiculos detalhesVeiculos, Veiculo veiculo, String nomeMotorista, Date dataNascimento, Character sexo, String cpf, String numeroCelular, String email, String senha, Date dataCadastro, Character status, String carteiraMotorista, List<Viagem> viagens) {
-        this.detalhesVeiculos = detalhesVeiculos;
-        this.veiculo = veiculo;
+    public Motorista(String nomeMotorista, Date dataNascimento, Character sexo, String cpf, String numeroCelular, String email, String senha, Date dataCadastro, Character status, String carteiraMotorista) {
         this.nomeMotorista = nomeMotorista;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
@@ -76,7 +74,6 @@ public class Motorista {
         this.dataCadastro = dataCadastro;
         this.status = status;
         this.carteiraMotorista = carteiraMotorista;
-        this.viagens = viagens;
     }
 
     public Long getIdMotorista() {

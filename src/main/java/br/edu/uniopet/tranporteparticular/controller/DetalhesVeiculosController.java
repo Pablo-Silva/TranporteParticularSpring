@@ -3,6 +3,7 @@ package br.edu.uniopet.tranporteparticular.controller;
 import br.edu.uniopet.tranporteparticular.model.DetalhesVeiculos;
 import br.edu.uniopet.tranporteparticular.repository.DetalhesVeiculosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,4 +33,8 @@ public class DetalhesVeiculosController {
         return ResponseEntity.created(null).body(detalhesVeiculos);
 
     }
+
+    @DeleteMapping("/{idDetalhesVeiculo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long idDetalhesVeiculo){ detalhesVeiculosRepository.deleteById(idDetalhesVeiculo); }
 }

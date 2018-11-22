@@ -40,8 +40,7 @@ public class Viagem {
     public Viagem() {
     }
 
-    public Viagem(Long idViagem, Motorista motorista, Cliente cliente, String enderecoSaida, String enderecoChegada, Date dataFim, Date dataInicio) {
-        this.idViagem = idViagem;
+    public Viagem( Motorista motorista, Cliente cliente, String enderecoSaida, String enderecoChegada, Date dataFim, Date dataInicio) {
         this.motorista = motorista;
         this.cliente = cliente;
         this.enderecoSaida = enderecoSaida;

@@ -2,6 +2,7 @@ package br.edu.uniopet.tranporteparticular.controller;
 
 import br.edu.uniopet.tranporteparticular.model.DetalhesVeiculos;
 import br.edu.uniopet.tranporteparticular.repository.DetalhesVeiculosRepository;
+import br.edu.uniopet.tranporteparticular.service.DetalhesVeiculoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,17 @@ public class DetalhesVeiculosController {
         detalhesVeiculosRepository.save(detalhesVeiculos);
 
         return ResponseEntity.created(null).body(detalhesVeiculos);
+
+    }
+
+    @RequestMapping(value = "/editar", method = RequestMethod.PUT, headers = {"content-type=application/json"})
+    public ResponseEntity<DetalhesVeiculos> editarDetalhesVeiculo(@RequestBody DetalhesVeiculos detalhesVeiculos){
+
+        DetalhesVeiculoService detalhesVeiculoService = new DetalhesVeiculoService(detalhesVeiculosRepository);
+
+        DetalhesVeiculos detalhesVeiculoEditado = detalhesVeiculoService.editDetalhesVeiculo(detalhesVeiculos);
+
+        return ResponseEntity.created(null).body(detalhesVeiculoEditado);
 
     }
 

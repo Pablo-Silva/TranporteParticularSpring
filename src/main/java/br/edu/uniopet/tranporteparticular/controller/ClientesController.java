@@ -22,8 +22,6 @@ public class ClientesController {
     @Autowired
     PessoaRepository pessoaRepository;
 
-    private ClienteService clienteService = new ClienteService(clienteRepository);
-
     @GetMapping
     public List<Cliente> list(){
         return clienteRepository.findAll();
@@ -51,6 +49,8 @@ public class ClientesController {
 
     @RequestMapping(value = "/editar", method = RequestMethod.PUT, headers = {"content-type=application/json"})
     public ResponseEntity<Cliente> editarCliente(@RequestBody Cliente cliente){
+
+        ClienteService clienteService = new ClienteService(clienteRepository);
 
         Cliente clienteEditado = clienteService.editCliente(cliente);
 

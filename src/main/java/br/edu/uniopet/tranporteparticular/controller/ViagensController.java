@@ -6,6 +6,7 @@ import br.edu.uniopet.tranporteparticular.model.Viagem;
 import br.edu.uniopet.tranporteparticular.payload.BuscarViagem;
 import br.edu.uniopet.tranporteparticular.payload.FazerViagem;
 import br.edu.uniopet.tranporteparticular.repository.ViagemRepository;
+import br.edu.uniopet.tranporteparticular.service.ViagemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,6 +48,17 @@ public class ViagensController {
         viagemRepository.save(viagem);
 
         return ResponseEntity.created(null).body(viagem);
+
+    }
+
+    @RequestMapping(value = "/editar", method = RequestMethod.PUT, headers = {"content-type=application/json"})
+    public ResponseEntity<Viagem> editarViagem(@RequestBody Viagem viagem){
+
+        ViagemService viagemService = new ViagemService(viagemRepository);
+
+        Viagem viagemEditada = viagemService.editViagem(viagem);
+
+        return ResponseEntity.created(null).body(viagemEditada);
 
     }
 }
